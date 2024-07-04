@@ -45,18 +45,18 @@
 
 #start {
     border: none;
-    background-color: #f4cfd3;
+    background-color: #f8b6bd;
     color: white;
 }
 
 #pause {
     border: none;
-    background-color: #ccf892;
+    background-color: #ccfc8d;
     color: white;
 }
 
 #reset {
     border: none;
-    background-color: #fc88b1;
+    background-color: #efff94;
     color: white;
 }
