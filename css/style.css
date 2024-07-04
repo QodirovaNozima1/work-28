@@ -1,6 +1,62 @@
-.timer{
-    border: 1px solid red;
-    width: 50vw;
-    height: 500px;
-    margin: auto;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #007bff71;
+    font-family: Arial, sans-serif;
+}
+
+.taymer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+    width: 400px;
+    height: 400px;
+    border-radius: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 50px;
+}
+
+#display {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start {
+    border: none;
+    background-color: #f4cfd3;
+    color: white;
+}
+
+#pause {
+    border: none;
+    background-color: #ccf892;
+    color: white;
+}
+
+#reset {
+    border: none;
+    background-color: #fc88b1;
+    color: white;
 }

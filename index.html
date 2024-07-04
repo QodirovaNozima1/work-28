@@ -7,11 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="timer">
-        <h1 class="clock">00:00:00</h1>
-    <button onclick="inc()">start</button>
-    <button onclick="stopInterval()"> Stop</button>
-    </div>
+    <main class="main">
+        <section class="hero">
+            <div class="taymer">
+                <div id="display">00 : 00 : 00 : 000</div>
+                <div class="buttons">
+                    <button id="start">Start</button>
+                    <button id="pause">Pause</button>
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="./js/app.js"></script>
 </body>
 </html>

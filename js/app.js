@@ -1,43 +1,58 @@
-const span = document.querySelector(".title span")
+let startTime, currentTime, elapsedTime = 0, timerInterval;
+let running = false;
 
 
-let offset = 0
+const display = document.getElementById('display');
+const startButton = document.getElementById('start');
+const pauseButton = document.getElementById('pause');
+const resetButton = document.getElementById('reset');
 
-function inc() {
-    offset++
-    span.textContent = offset
+
+startButton.addEventListener('click', startTimer);
+pauseButton.addEventListener('click', pauseTimer);
+resetButton.addEventListener('click', resetTimer);
+
+
+function startTimer() {
+    if (!running) {
+        startTime = Date.now() - elapsedTime;
+        timerInterval = setInterval(updateDisplay, 10);
+        running = true;
+    }
 }
 
-// let interval = setInterval(()=>{
-//     console.log("qayata qayta");
-//     inc()
-//     // if (offset >= "star") {
-//     //     clearInterval(interval)
-//     // }
-// } ,500)
 
-// setTimeout(()=>{
-//     console.log("stop");
-// },3000)
-
-// function stopInterval(params) {
-//     clearInterval(interval)
-// }
-
-
- const millisecond = document.querySelector(".millisecond");
-
- function soat(){
-    let date = new Date()
-    let hour = date.getHours().toString().padStart(2, "0")
-    let minute = date.getMinutes().toString().padStart(2, "0")
-    let second = date.getSeconds().toString().padStart(2, "0")
-    let millisecond = date.getMilliseconds().toString().padStart(2, "0")
-    let day = date.getDay()
-    clock.textContent = `${hour}:${minute}:${second}`;
-    millisecond.textContent = `${millisecond}`
+function pauseTimer() {
+    if (running) {
+        clearInterval(timerInterval);
+        elapsedTime = Date.now() - startTime;
+        running = false;
+    }
 }
-soat()
-setInterval(()=>{
-    soat()
-},100);
+
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    elapsedTime = 0;
+    running = false;
+    display.textContent = '00 : 00 : 00 : 000';
+}
+
+
+function updateDisplay() {
+    currentTime = Date.now();
+    elapsedTime = currentTime - startTime;
+
+    let hours = Math.floor((elapsedTime / (1000 * 60 * 60)) / 24);
+    let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    let seconds = Math.floor((elapsedTime / 1000) % 60);
+    let milliseconds = Math.floor(elapsedTime % 1000);
+
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    milliseconds = milliseconds < 100 ? '0' + milliseconds : milliseconds;
+    milliseconds = milliseconds < 10 ? '00' + milliseconds : milliseconds;
+
+    display.textContent = `${hours} : ${minutes} : ${seconds} : ${milliseconds}`;
+}
